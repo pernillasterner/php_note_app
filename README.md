@@ -1,2 +1,3 @@
-# php_mini_project
-A simple note application. 
+# Mini Note App
+
+A simple note application.
