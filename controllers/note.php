@@ -14,4 +14,4 @@ $heading = 'My Note';
 $notes = $db->query('select * from notes where id = :id', ['id' => $_GET['id']])->fetchAll();
 
 
-require "views/note.view.php";
+require "views/notes.view.php";
