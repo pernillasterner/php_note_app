@@ -59,3 +59,10 @@ function authorize($condition, $status = Response::FORBIDDEN)
     }
 }
 ```
+
+___
+
+### POST and GET Methods
+
+- `$_POST` = Use for sending sensitive information. Sends data behind the scenes.
+- `$_GET` = Use for sharing or fetching data where visibility isn´t a problem. Sends data via query string in the URL.
