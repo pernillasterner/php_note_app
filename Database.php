@@ -49,7 +49,7 @@ class Database
         return $result;
     }
 
-    public function findAll()
+    public function get()
     {
         return $this->statement->fetchAll();
     }
