@@ -5,7 +5,7 @@ $config = require('config.php');
 // Initialize a new instance of a class
 $db = new Database($config['database']);
 
-$heading = 'My Note';
+$heading = 'Note';
 
 
 // Get id from the url and use that id to get the corresponding data from the database. Use wildcard to prevent sql injections.
