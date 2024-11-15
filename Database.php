@@ -4,6 +4,7 @@
 class Database
 {
     public $connection;
+    public $statement; // Assigning PDO statement to the object
 
     // When and instance is constructed. First thing to run
     public function __construct($config, $username = 'root', $password = '')
@@ -23,12 +24,33 @@ class Database
     public function query($query, $params = [])
     {
 
-        $statement = $this->connection->prepare($query);
+        $this->statement = $this->connection->prepare($query);
 
         // Execute the code
-        $statement->execute($params);
+        $this->statement->execute($params);
 
         // Fetch the results and remove duplicate array
-        return $statement;
+        return $this;
+    }
+
+    public function find()
+    {
+        return $this->statement->fetch();
+    }
+
+    public function findOrFail()
+    {
+        $result = $this->find();
+
+        if (! $result) {
+            abort();
+        }
+
+        return $result;
+    }
+
+    public function findAll()
+    {
+        return $this->statement->fetchAll();
     }
 }
