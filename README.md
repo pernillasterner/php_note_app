@@ -34,12 +34,16 @@ array(1) {
 
 ___
 
+
 ### Status codes
 
 - 403 Forbidden
 - 404 Page Not Found
 
+
 ___
+
+
 
 ### Functions
 
@@ -60,7 +64,10 @@ function authorize($condition, $status = Response::FORBIDDEN)
 }
 ```
 
+
 ___
+
+
 
 ### POST and GET Methods
 
