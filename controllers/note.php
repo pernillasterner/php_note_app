@@ -1,4 +1,10 @@
 <?php
+
+/**
+ * Controller that handles Notes from a specific user
+ */
+
+
 // Config data
 $config = require('config.php');
 
@@ -10,6 +16,18 @@ $heading = 'Note';
 
 // Get id from the url and use that id to get the corresponding data from the database. Use wildcard to prevent sql injections.
 $note = $db->query('select * from notes where id = :id', ['id' => $_GET['id']])->fetch();
+
+// Two resons why we want to abort
+// 1. If the note exists in the database but current user did not create is. Access problem
+// 2. Note doesn't exist in the database.
+// Status code 404 - Page Not Found
+if (! $note) {
+    abort();
+}
+// Status code 403 - Forbidden
+if ($note['user_id'] !== 1) {
+    abort(403);
+}
 
 
 require "views/note.view.php";

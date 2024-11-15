@@ -31,3 +31,8 @@ array(1) {
   }
 }
 ```
+
+### Status codes
+
+- 403 Forbidden
+- 404 Page Not Found
