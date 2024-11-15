@@ -1,7 +1,7 @@
 <?php
 
-// parse_url breaks down a URL into its components
-$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+$routes = require('routes.php');
+
 
 // Function to handle routing
 function routeToController($uri, $routes)
@@ -23,5 +23,7 @@ function abort($code = 404)
     die();
 }
 
+// parse_url breaks down a URL into its components
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 routeToController($uri, $routes);
