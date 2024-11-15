@@ -31,9 +31,31 @@ array(1) {
   }
 }
 ```
+
 ___
 
 ### Status codes
 
 - 403 Forbidden
 - 404 Page Not Found
+
+___
+
+### Functions
+
+Creating custom functions to simplify common tasks. 📁
+
+This function checks condition if the user is authorized, and if the condition fails, it aborts the process with a given status code. 
+
+```php
+authorize($note['user_id'] !== $currentUserId);
+
+// Make it possible to overwrite status code
+function authorize($condition, $status = Response::FORBIDDEN)
+{
+    // Status code 403 - Forbidden
+    if (! $condition) {
+        abort($status);
+    }
+}
+```
