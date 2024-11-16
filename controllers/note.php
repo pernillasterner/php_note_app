@@ -1,25 +1,30 @@
 <?php
 
 /**
- * Controller that handles Notes from a specific user
+ * Controller: View a Specific Note
+ * 
+ * This script retrieves a specific note from the database
+ * based on the note ID provided in the URL.
+ * 
  */
 
 
-// Config data
+// Loads configuration data
 $config = require('config.php');
 
 
-// Initialize a new instance of a class
+// Connects to the database
 $db = new Database($config['database']);
 
 $heading = 'Note';
 $currentUserId = 1;
 
 
-// Get id from the url and use that id to get the corresponding data from the database. Use wildcard to prevent sql injections.
+// Fetches the note using the provided ID with parameterized queries to prevent SQL injection.
 $note = $db->query('select * from notes where id = :id', ['id' => $_GET['id']])->findOrFail();
 
+// Ensures that the current user is authorized to view the note.
 authorize($note['user_id'] === $currentUserId);
 
-
+// Passes data to the view for rendering
 require "views/note.view.php";
