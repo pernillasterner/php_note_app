@@ -9,13 +9,22 @@ $heading = 'Create a Note';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Insert the incoming respons to the database. 
-    // Need to add the useID
 
-    $db->query('INSERT INTO notes (body, user_id) VALUES(:body, :user_id)', [
-        'body' => $_POST['body'],
-        'user_id' => 1
-    ]);
+    $errors = [];
+
+    if (strlen($_POST['body'] === 0)) {
+        $errors['body'] = 'A body is required';
+    }
+
+    // If no validation errors proceed
+    if (!empty($errors)) {
+        // Insert the incoming response to the database. 
+        // Need to add the useID
+        $db->query('INSERT INTO notes (body, user_id) VALUES(:body, :user_id)', [
+            'body' => $_POST['body'],
+            'user_id' => 1
+        ]);
+    }
 }
 
 
