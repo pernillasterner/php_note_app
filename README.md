@@ -90,6 +90,6 @@ ___
 If $_POST['body'] exists and is not null, its value is returned; otherwise, an empty string is used.
 
 ```php
-// You can do this PHP 8 ->
+// You can do this PHP 7+
 <?= $_POST['body'] ?? '' ?>
 ```
