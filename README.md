@@ -73,3 +73,23 @@ ___
 
 - `$_POST` = Use for sending sensitive information. Sends data behind the scenes.
 - `$_GET` = Use for sharing or fetching data where visibility isn´t a problem. Sends data via query string in the URL.
+
+___
+
+
+### Simplifying Null Coalescing in PHP
+
+
+##### Example 1: Traditional Ternary Operator
+```php
+// You can do this OR 
+<?= isset($_POST['body']) ? $_POST['body'] : '' ?>
+```
+
+##### Example 2: Null Coalescing Operator (PHP 7+)
+If $_POST['body'] exists and is not null, its value is returned; otherwise, an empty string is used.
+
+```php
+// You can do this PHP 8 ->
+<?= $_POST['body'] ?? '' ?>
+```
