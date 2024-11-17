@@ -1,5 +1,9 @@
 <?php
 
-$heading = 'Home';
+/**
+ * Load a view template and pass data to it.
+ */
 
-require "views/index.view.php";
+view("index.view.php", [
+    'heading' => 'Home'
+]);

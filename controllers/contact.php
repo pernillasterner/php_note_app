@@ -1,5 +1,9 @@
 <?php
 
-$heading = 'Contact Us';
+/**
+ * Load a view template and pass data to it.
+ */
 
-require "views/contact.view.php";
+view("contact.view.php", [
+    'heading' => 'Contact Us'
+]);

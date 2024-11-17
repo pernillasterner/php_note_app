@@ -1,5 +1,9 @@
 <?php
 
-$heading = 'About Us';
+/**
+ * Load a view template and pass data to it.
+ */
 
-require "views/about.view.php";
+view("about.view.php", [
+    'heading' => 'About Us'
+]);

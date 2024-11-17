@@ -24,3 +24,17 @@ function authorize($condition, $status = Response::FORBIDDEN)
         abort($status);
     }
 }
+
+
+// Helper function for declaring a path that is relative to the root of the project
+function base_path($path)
+{
+    return BASE_PATH . $path;
+}
+
+function view($path, $attributes = [])
+{
+    // Import variables into the current symbol table from an array
+    extract($attributes);
+    require base_path('views/' . $path); // /views/index.view.php
+}
