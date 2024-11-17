@@ -27,4 +27,4 @@ $note = $db->query('select * from notes where id = :id', ['id' => $_GET['id']])-
 authorize($note['user_id'] === $currentUserId);
 
 // Passes data to the view for rendering
-require "views/note.view.php";
+require "views/create.view.php";

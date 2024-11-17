@@ -22,4 +22,4 @@ $notes = $db->query('select * from notes where user_id = 1')->get();
 
 
 // Passes data to the view for rendering
-require "views/notes.view.php";
+require "views/index.view.php";
