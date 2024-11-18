@@ -10,13 +10,12 @@
 
 
 // Loads configuration data
-$config = require('config.php');
+$config = require base_path('config.php');
 
 
 // Connects to the database
 $db = new Database($config['database']);
 
-$heading = 'Note';
 $currentUserId = 1;
 
 
@@ -27,4 +26,7 @@ $note = $db->query('select * from notes where id = :id', ['id' => $_GET['id']])-
 authorize($note['user_id'] === $currentUserId);
 
 // Passes data to the view for rendering
-require "views/notes/show.view.php";
+view("notes/show.view.php", [
+    'heading' => 'Note',
+    'note' => $note
+]);

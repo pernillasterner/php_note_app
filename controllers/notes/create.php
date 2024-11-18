@@ -4,14 +4,12 @@
  * Controller: Creating Notes
  */
 
-require 'Validator.php';
+require base_path('Validator.php');
 
 // Config data
-$config = require 'config.php';
+$config = require base_path('config.php');
 // Initialize a new instance of a class
 $db = new Database($config['database']);
-
-$heading = 'Create a Note';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -36,4 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 
-require 'views/notes/create.view.php';
+view("notes/create.view.php", [
+    'heading' => 'Create a Note',
+    'errors' => $errors
+]);
