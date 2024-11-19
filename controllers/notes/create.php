@@ -11,13 +11,14 @@ $config = require base_path('config.php');
 // Initialize a new instance of a class
 $db = new Database($config['database']);
 
+$errors = [];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $errors = [];
+
 
     // Check if POST contains string. :: Calling a static method on a Class
-    if (! Validator::string($_POST['body'], 1, 1000)) {
+    if (! Validator::string($_POST['body'], 1, 10)) {
         $errors['body'] = 'A body of no more than 1,000 characters is required';
     }
 
@@ -35,6 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 view("notes/create.view.php", [
-    'heading' => 'Create a Note',
+    'heading' => 'Create Note',
     'errors' => $errors
 ]);
