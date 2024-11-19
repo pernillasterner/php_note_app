@@ -8,6 +8,7 @@
  * 
  */
 
+use Core\Database;
 
 // Loads configuration data
 $config = require base_path('config.php');

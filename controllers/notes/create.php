@@ -4,7 +4,10 @@
  * Controller: Creating Notes
  */
 
-require base_path('Validator.php');
+use Core\Database;
+use Core\Validator;
+
+require base_path('Core/Validator.php');
 
 // Config data
 $config = require base_path('config.php');
