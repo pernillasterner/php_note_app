@@ -6,8 +6,13 @@ const BASE_PATH = __DIR__ . '/../';
 // ...php_note_app/public/../
 // var_dump(BASE_PATH);
 
+// Loading functions
 require BASE_PATH . 'functions.php';
 
-require base_path('Database.php');
-require base_path('Response.php');
+
+// Automatically loads class files by converting the class name into a file path and requiring it.
+spl_autoload_register(function ($class) {
+    require base_path($class . '.php');
+});
+
 require base_path('router.php');
