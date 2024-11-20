@@ -5,13 +5,10 @@
  * 
  */
 
-use Core\Database;
+use Core\App;
 
-// Loads configuration data
-$config = require base_path('config.php');
-
-// Connects to the database
-$db = new Database($config['database']);
+// Loads configuration data and connects to the database
+$db = APP::container()->resolve(\Core\Database::class);
 
 $currentUserId = 1;
 
