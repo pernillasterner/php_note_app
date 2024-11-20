@@ -1,10 +1,7 @@
 <?php
 
 /**
- * Controller: View a Specific Note
- * 
- * This script retrieves a specific note from the database
- * based on the note ID provided in the URL.
+ * Controller: Delete a Specific Note
  * 
  */
 
@@ -18,10 +15,9 @@ $db = new Database($config['database']);
 
 $currentUserId = 1;
 
-
 // Fetches the note using the provided ID with parameterized queries to prevent SQL injection.
 $note = $db->query('select * from notes where id = :id', [
-    'id' => $_GET['id']
+    'id' => $_POST['id']
 ])->findOrFail();
 
 // Ensures that the current user is authorized to view the note.
@@ -29,7 +25,7 @@ authorize($note['user_id'] === $currentUserId);
 
 // form was submitted. delete the current note.
 $db->query('delete from notes where id = :id', [
-    'id' => $_GET['id']
+    'id' => $_POST['id']
 ]);
 
 // Redirect user to notes page
