@@ -12,8 +12,8 @@
         <p><?= htmlspecialchars($note['body']); ?></p>
 
         <form class="mt-6" method="POST">
-            <!-- Send hidden note id with request. -->
-            <input type="hidden" value="<?= $note['id']; ?>">
+            <!-- Send hidden note id with POST request. -->
+            <input type="hidden" name="id" value="<?= $note['id']; ?>">
             <button class="text-sm text-red-500">Delete</button>
         </form>
 
