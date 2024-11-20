@@ -17,4 +17,16 @@ spl_autoload_register(function ($class) {
     require base_path("{$class}.php");
 });
 
-require base_path('Core/router.php');
+// require base_path('Core/router.php');
+$router = new \Core\Router();
+
+
+$routes = require base_path('routes.php');
+// parse_url breaks down a URL into its components
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+
+// If _method is set then override POST with DELETE method
+$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
+
+// routeToController($uri, $routes);
+$router->route($uri, 'GET');
