@@ -18,7 +18,6 @@ $db = new Database($config['database']);
 
 $currentUserId = 1;
 
-
 // Fetches the note using the provided ID with parameterized queries to prevent SQL injection.
 $note = $db->query('select * from notes where id = :id', [
     'id' => $_GET['id']
@@ -27,11 +26,8 @@ $note = $db->query('select * from notes where id = :id', [
 // Ensures that the current user is authorized to view the note.
 authorize($note['user_id'] === $currentUserId);
 
-// form was submitted. delete the current note.
-$db->query('delete from notes where id = :id', [
-    'id' => $_GET['id']
+// Passes data to the view for rendering
+view("notes/show.view.php", [
+    'heading' => 'Note',
+    'note' => $note
 ]);
-
-// Redirect user to notes page
-header('location: /notes');
-exit();
