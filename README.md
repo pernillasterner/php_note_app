@@ -93,3 +93,18 @@ If $_POST['body'] exists and is not null, its value is returned; otherwise, an e
 // You can do this PHP 7+
 <?= $_POST['body'] ?? '' ?>
 ```
+
+___
+
+
+### compact()
+
+Creates an associative array where the keys are the names of the given variables ('method', 'uri', 'controller'), and the values are the corresponding variable values.
+
+
+```php
+  public function add($method, $uri, $controller)
+    {
+        $this->routes[] = compact('method', 'uri', 'controller');
+    }
+```
