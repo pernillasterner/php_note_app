@@ -1,5 +1,15 @@
 <?php
-// Reusable functions.
+
+/**
+ * Utility functions for the application
+ * 
+ * Provides helper functions for debugging, URL handling,
+ * authorization, path management, and rendering views
+ * 
+ */
+
+// Importing class Response
+use Core\Response;
 
 function dd($value)
 {
@@ -16,7 +26,7 @@ function urlIs($value)
     return $_SERVER['REQUEST_URI'] === $value;
 }
 
-// Make it possible to overwrite status code
+// Function that makes it possible to overwrite status code
 function authorize($condition, $status = Response::FORBIDDEN)
 {
     // Status code 403 - Forbidden
@@ -25,13 +35,13 @@ function authorize($condition, $status = Response::FORBIDDEN)
     }
 }
 
-
-// Helper function for declaring a path that is relative to the root of the project
+// Function for declaring a path that is relative to the root of the project
 function base_path($path)
 {
     return BASE_PATH . $path;
 }
 
+// Function for rendering views
 function view($path, $attributes = [])
 {
     // Import variables into the current symbol table from an array
