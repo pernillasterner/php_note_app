@@ -9,6 +9,14 @@
             <a href="/notes" class="text-blue-500 underline">go back...</a>
         </p>
 
+        <p><?= htmlspecialchars($note['body']); ?></p>
+
+        <form class="mt-6" method="POST">
+            <!-- Send hidden note id with request. -->
+            <input type="hidden" value="<?= $note['id']; ?>">
+            <button class="text-sm text-red-500">Delete</button>
+        </form>
+
     </div>
 </main>
 <?php require base_path('views/partials/footer.php') ?>
