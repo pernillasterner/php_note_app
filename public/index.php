@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 //  __DIR__ = Current directory
 // BASE_PATH = Root of the project
 const BASE_PATH = __DIR__ . '/../';
