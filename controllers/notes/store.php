@@ -4,14 +4,12 @@
  * Controller: Store a Specific Note
  */
 
+use Core\App;
 use Core\Validator;
 use Core\Database;
 
-
-// Config data
-$config = require base_path('config.php');
-// Initialize a new instance of a class
-$db = new Database($config['database']);
+// Loads configuration data and connects to the database
+$db = App::resolve(Database::class);
 
 // Check if POST contains string. :: Calling a static method on a Class
 if (! Validator::string($_POST['body'], 1, 1000)) {

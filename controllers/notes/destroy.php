@@ -6,9 +6,10 @@
  */
 
 use Core\App;
+use Core\Database;
 
 // Loads configuration data and connects to the database
-$db = APP::container()->resolve(\Core\Database::class);
+$db = App::resolve(Database::class);
 
 $currentUserId = 1;
 

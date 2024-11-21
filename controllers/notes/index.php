@@ -9,14 +9,11 @@
  * 
  */
 
+use Core\App;
 use Core\Database;
 
-// Loads configuration data
-$config = require base_path('config.php');
-
-// Connects to the database
-$db = new Database($config['database']);
-
+// Loads configuration data and connects to the database
+$db = App::resolve(Database::class);
 
 
 // Retrievs notes for user_id = 1
