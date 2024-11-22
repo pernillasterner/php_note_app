@@ -108,3 +108,29 @@ Creates an associative array where the keys are the names of the given variables
         $this->routes[] = compact('method', 'uri', 'controller');
     }
 ```
+
+___
+
+
+### Middleware
+
+Middleware is software that lies between an operating system and the application running on it. 
+
+```php
+
+// Applying middleware to the route
+        $this->routes[array_key_last($this->routes)]['middleware'] = $key;
+
+// Results
+  array(4) {
+    ["method"]=>
+    string(3) "GET"
+    ["uri"]=>
+    string(9) "/register"
+    ["controller"]=>
+    string(35) "controllers/registration/create.php"
+    ["middleware"]=>
+    string(5) "guest"
+  }
+
+```
