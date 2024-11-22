@@ -66,12 +66,15 @@ class Router
             // dd($this->routes);
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
 
-                $middleware = Middleware::MAP[$route['middleware']];
+                if ($route['middleware']) {
 
-                // apply the middleware
-                // Instantiate the Middleware class and call the handle method
-                // new Auth or Guest->handle();
-                (new $middleware)->handle();
+                    // apply the middleware
+                    // Instantiate the Middleware class and call the handle method
+                    // new Auth or Guest->handle();
+                    $middleware = Middleware::MAP[$route['middleware']];
+
+                    (new $middleware)->handle();
+                }
 
                 return require base_path($route['controller']);
             }
