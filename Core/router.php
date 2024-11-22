@@ -63,17 +63,12 @@ class Router
     {
 
         foreach ($this->routes as $route) {
-            // dd($this->routes);
+
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
 
+                // apply the middleware
                 if ($route['middleware']) {
-
-                    // apply the middleware
-                    // Instantiate the Middleware class and call the handle method
-                    // new Auth or Guest->handle();
-                    $middleware = Middleware::MAP[$route['middleware']];
-
-                    (new $middleware)->handle();
+                    Middleware::resolve($route['middleware']);
                 }
 
                 return require base_path($route['controller']);
