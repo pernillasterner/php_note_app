@@ -42,6 +42,7 @@ if ($user) {
     // then someone with that email already exists and has an account
     // If yes, redirect to a login page.
     header('location: /');
+    exit();
 } else {
     // If not, save one to the database, and then log the user in, and redirect.
 
@@ -55,9 +56,12 @@ if ($user) {
     );
 
     // log in user
-
+    $_SESSION['user'] = [
+        'email' => $email
+    ];
 
 
     // redirect
-
+    header('location: /');
+    exit();
 }
