@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Core\Middleware\Middleware;
+
 class Router
 {
     protected $routes = [];
@@ -64,22 +66,12 @@ class Router
             // dd($this->routes);
             if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
 
-                // apply the middleware
-                if ($route['middleware'] === 'guest') {
-                    if ($_SESSION['user'] ?? false) {
-                        // redirect users that are not signed in
-                        header('location: /');
-                        exit();
-                    }
-                }
+                $middleware = Middleware::MAP[$route['middleware']];
 
-                if ($route['middleware'] === 'auth') {
-                    if (! $_SESSION['user'] ?? false) {
-                        // redirect users that are not signed in
-                        header('location: /');
-                        exit();
-                    }
-                }
+                // apply the middleware
+                // Instantiate the Middleware class and call the handle method
+                // new Auth or Guest->handle();
+                (new $middleware)->handle();
 
                 return require base_path($route['controller']);
             }
