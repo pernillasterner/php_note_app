@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Declaration of rotes
+ * Declaration of routes
  * 
  * Route listener our endpoint
  */
@@ -29,3 +29,4 @@ $router->post('/register', 'controllers/registration/store.php');
 
 
 $router->get('/login', 'controllers/sessions/create.php')->only('guest');
+$router->post('/sessions', 'controllers/sessions/store.php')->only('guest');
