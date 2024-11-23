@@ -8,9 +8,9 @@
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="/" class="<?= urlIs('/') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white" aria-current="page">Home</a>
-                        <a href="/about" class="<?= urlIs('/about.php') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
-                        <a href="/notes" class="<?= urlIs('/notes.php') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Notes</a>
-                        <a href="/contact" class="<?= urlIs('/contact.php') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
+                        <a href="/about" class="<?= urlIs('/about') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
+                        <a href="/notes" class="<?= urlIs('/notes') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Notes</a>
+                        <a href="/contact" class="<?= urlIs('/contact') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Contact</a>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,9 @@
                                 <?php if ($_SESSION['user'] ?? false) : ?>
                                     <img class="h-8 w-8 rounded-full" src="https://avatarfiles.alphacoders.com/374/374586.png" alt="Avatar image">
                                 <?php else : ?>
-                                    <a href="/register" class="text-white">Register</a>
+                                    <a href="/register" class="<?= urlIs('/register') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Register</a>
+
+                                    <a href="/login" class="<?= urlIs('/login') ? 'bg-gray-900 text-white' : 'text-gray-300'; ?> rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Login</a>
                                 <?php endif; ?>
                             </button>
                         </div>
@@ -82,11 +84,12 @@
                         <img class="h-10 w-10 rounded-full" src="https://avatarfiles.alphacoders.com/374/374586.png" alt="Avatar image">
                     <?php else : ?>
                         <a href="/register" class="text-white">Register</a>
+                        <a href="/login" class="text-white">Login</a>
                     <?php endif; ?>
                 </div>
                 <div class="ml-3">
-                    <div class="text-base/5 font-medium text-white">Pernilla</div>
-                    <div class="text-sm font-medium text-gray-400">pernilla@undeco.se</div>
+                    <!-- <div class="text-base/5 font-medium text-white">Pernilla</div>
+                    <div class="text-sm font-medium text-gray-400">pernilla@undeco.se</div> -->
                 </div>
                 <button type="button" class="relative ml-auto shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                     <span class="absolute -inset-1.5"></span>
