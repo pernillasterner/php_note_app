@@ -56,9 +56,9 @@ if ($user) {
     );
 
     // log in user
-    $_SESSION['user'] = [
+    login([
         'email' => $email
-    ];
+    ]);
 
 
     // redirect
