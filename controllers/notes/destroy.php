@@ -11,7 +11,7 @@ use Core\Database;
 // Loads configuration data and connects to the database
 $db = App::resolve(Database::class);
 
-$currentUserId = 1;
+$currentUserId = 8;
 
 // Fetches the note using the provided ID with parameterized queries to prevent SQL injection.
 $note = $db->query('select * from notes where id = :id', [

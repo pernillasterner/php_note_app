@@ -30,7 +30,7 @@ if (! empty($errors)) {
 // Need to add the useID
 $db->query('INSERT INTO notes (body, user_id) VALUES(:body, :user_id)', [
     'body' => $_POST['body'],
-    'user_id' => 1
+    'user_id' => 8
 ]);
 
 header('location: /notes');
