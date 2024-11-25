@@ -58,26 +58,8 @@ function view($path, $attributes = [])
     require base_path('views/' . $path); // /views/index.view.php
 }
 
-
-function login($user)
+function redirect($path)
 {
-    $_SESSION['user'] = [
-        'email' => $user['email']
-    ];
-
-    // update the current session id with the newly generated one
-    session_regenerate_id(true);
-}
-
-function logout()
-{
-    // clear out the global session
-    $_SESSION = [];
-    // destroy the session
-    session_destroy();
-
-    // clear out the cookies
-    $params = session_get_cookie_params();
-    setcookie('PHPSESSID', '', time() - 3600, $params['path'], $params['domain'], $params['secure'], $params['httponly']); // Current time - one houre
-
+    header("location: {$path}");
+    exit();
 }
