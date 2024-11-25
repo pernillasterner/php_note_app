@@ -1,0 +1,15 @@
+{
+    "name": "psterner/php_note_app",
+    "authors": [
+        {
+            "name": "Pernilla"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "Core/",
+            "Http\\": "Http/"
+        }
+    }
+}
