@@ -1,7 +1,8 @@
 <?php
 
+use Core\Authenticator;
 
-logout();
+(new Authenticator)->logout();
 
 
 // redirect to home page

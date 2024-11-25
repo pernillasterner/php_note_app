@@ -4,7 +4,7 @@ namespace Core;
 
 use Core\App;
 use Core\Database;
-use Session\Session;
+use Core\Session;
 
 
 class Authenticator
