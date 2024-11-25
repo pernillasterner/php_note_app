@@ -1,6 +1,7 @@
 <?php
 
 use Core\Session;
+use Core\ValidationException;
 
 session_start();
 
@@ -26,16 +27,25 @@ require base_path('bootstrap.php');
 
 // require base_path('Core/router.php');
 $router = new \Core\Router();
-
-
 $routes = require base_path('routes.php');
+
 // parse_url breaks down a URL into its components
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-
 // If _method is set then override POST with DELETE method
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 
-// routeToController($uri, $routes);
-$router->route($uri, $method);
+
+try {
+
+    // routeToController($uri, $routes);
+    $router->route($uri, $method);
+} catch (ValidationException $exception) {
+    // if auth or validation fails, return to login form and display error message
+    Session::flash('errors', $exception->errors);
+    Session::flash('old', $exception->old);
+
+    // return redirect('/login');
+}
+
 
 Session::unflash();
