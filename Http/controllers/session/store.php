@@ -18,12 +18,20 @@ $form = LoginForm::validate($attributes = [
 ]);
 
 
+$signedIn = (new Authenticator)->attempt(
+    $attributes['email'],
+    $attributes['password']
+);
+
 
 // create a authenticator and authenticate user based on email and password
-if ((new Authenticator)->attempt($attributes['email'], $attributes['password'])) {
-    // sign in if success
-    redirect('/');
+if ($signedIn) {
+    $form->error(
+        'email',
+        'No matching account found for that email address and password.'
+    )->throw();
 }
 
 
-$form->error('email', 'No matching account found for that email address and password.');
+// sign in if success
+redirect('/');
