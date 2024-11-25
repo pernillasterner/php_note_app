@@ -8,7 +8,7 @@
 
 use Core\Authenticator;
 use Http\Forms\LoginForm;
-
+use Session\Session;
 
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -17,7 +17,7 @@ $password = $_POST['password'];
 $form = new LoginForm();
 
 // validate email and password
-if (! $form->validate($email, $password)) {
+if ($form->validate($email, $password)) {
 
     // create a authenticator and authenticate user based on email and password
     if ((new Authenticator)->attempt($email, $password)) {
@@ -30,6 +30,6 @@ if (! $form->validate($email, $password)) {
 
 
 // if auth or validation fails, return to login form and display error message
-return view('session/create.view.php', [
-    'errors' => $form->errors()
-]);
+Session::flash('errors', $form->errors());
+
+return redirect('/login');
