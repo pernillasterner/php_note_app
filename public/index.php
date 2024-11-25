@@ -1,5 +1,7 @@
 <?php
 
+use Session\Session;
+
 session_start();
 
 //  __DIR__ = Current directory
@@ -36,5 +38,4 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];
 // routeToController($uri, $routes);
 $router->route($uri, $method);
 
-// remove error messages when reloading the page.
-unset($_SESSION['_flash']);
+Session::unflash();
